@@ -28,7 +28,7 @@ function printValues($arr) {
 }
 
 // Assign JSON encoded string to a PHP variable
-$json = $jsonapi = file_get_contents('https://v1.nocodeapi.com/nekyltmbrvll/instagram/JOTCADshYmqIDMKQ');
+$json = $jsonapi = file_get_contents('https://v1.nocodeapi.com/nekyltmbrvll/instagram/KsdBulVGoJcmIlPe');
 // Decode JSON data into PHP associative array format
 $arr = json_decode($json, true);
 
