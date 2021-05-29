@@ -28,7 +28,7 @@ function printValues($arr) {
 }
 
 // Assign JSON encoded string to a PHP variable
-$json = $jsonapi = file_get_contents('http://api.weatherapi.com/v1/current.json?key=a078f06fa64e48b7a4965629212905&q=London&aqi=no');
+$json = $jsonapi = file_get_contents('https://v1.nocodeapi.com/nekyltmbrvll/instagram/JOTCADshYmqIDMKQ');
 // Decode JSON data into PHP associative array format
 $arr = json_decode($json, true);
 
@@ -36,7 +36,7 @@ $arr = json_decode($json, true);
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Weather API</title>
+        <title>Two AP</title>
         <style>
         body {
             font: 600 14px/24px "Open Sans",
@@ -113,14 +113,12 @@ $arr = json_decode($json, true);
         <div class="container">
            <section>
            <aside>
-            <img src="<?php echo $arr["current"]["condition"]["icon"];?>"/>
-            <?php echo "<h3>" . $arr["current"]["condition"]["text"] . "</h3>"; ?>
-             </aside>
+            <img src="<?php echo $arr["media_url"];?>"/>
+            <?php echo "<h3>" . $arr["data"]["id"]["media_type"]["media_url"]["permalink"]["username"]["timestamp"] . "</h3>"; ?>
+            </aside>
             <?php
             // Print a single value
-            echo "<h1>" . $arr["location"]["name"] . "</h1>";
-            echo "<h2>" . $arr["location"]["country"] . "</h2>";
-            echo "<h3>" . $arr["current"]["temp_c"] . "°C</h3>";
+            echo "<h1>" . $arr["data"]["id"]["media_type"]["media_url"]["permalink"]["username"]["timestamp"] . "</h1>";
             ?>
             </section>
         </div>
