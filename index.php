@@ -45,7 +45,6 @@ $arr = json_decode($json, true);
                
             </section>
         </div>
-        <div>
-           
+     
     </body>
 </html>
