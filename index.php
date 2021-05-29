@@ -1,3 +1,39 @@
+<?php
+// Define recursive function to extract nested values
+function printValues($arr) {
+    global $count;
+    global $values;
+
+    // Check input is an array
+    if(!is_array($arr)){
+        die("ERROR: Input is not an array");
+    }
+
+    /*
+    Loop through array, if value is itself an array recursively call the
+    function else add the value found to the output items array,
+    and increment counter by 1 for each value found
+    */
+    foreach($arr as $key=>$value){
+        if(is_array($value)){
+            printValues($value);
+        } else{
+            $values[] = $value;
+            $count++;
+        }
+    }
+
+    // Return total count and values found in array
+    return array('total' => $count, 'values' => $values);
+}
+
+// Assign JSON encoded string to a PHP variable
+$json = $jsonapi = file_get_contents('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=130525785809675&autoLogAppEvents=1');
+// Decode JSON data into PHP associative array format
+$arr = json_decode($json, true);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
