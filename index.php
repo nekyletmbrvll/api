@@ -1,19 +1,12 @@
 <?php
-// Define recursive function to extract nested values
+
 function printValues($arr) {
     global $count;
     global $values;
-
-    // Check input is an array
+    
     if(!is_array($arr)){
         die("ERROR: Input is not an array");
     }
-
-    /*
-    Loop through array, if value is itself an array recursively call the
-    function else add the value found to the output items array,
-    and increment counter by 1 for each value found
-    */
     foreach($arr as $key=>$value){
         if(is_array($value)){
             printValues($value);
@@ -22,105 +15,37 @@ function printValues($arr) {
             $count++;
         }
     }
-
-    // Return total count and values found in array
     return array('total' => $count, 'values' => $values);
 }
 
-// Assign JSON encoded string to a PHP variable
 $json = $jsonapi = file_get_contents('https://v1.nocodeapi.com/nekyltmbrvll/instagram/KsdBulVGoJcmIlPe');
-// Decode JSON data into PHP associative array format
 $arr = json_decode($json, true);
 
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Two AP</title>
-        <style>
-        body {
-            font: 600 14px/24px "Open Sans",
-               "HelveticaNeue-Light",
-               "Helvetica Neue Light",
-               "Helvetica Neue",
-               Helvetica, Arial,
-               "Lucida Grande",
-               Sans-Serif;
-         }
-         h1 {
-            color: #312f2f;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            margin-left: 10px;
-         }
-         h2 {
-            color: #312f2f;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            margin-left: 10px;
-         }
-         h3 {
-            color: #312f2f;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            margin-left: 10px;
-         }
-         .container:before, .container:after {
-            content: "";
-            display: table;
-         }
-         .container:after {
-            clear: both;
-         }
-         .container {
-            background: #eaeaed;
-            margin-bottom: 24px;
-            *zoom: 1;
-         }
-         .container-75 {
-            width: 75%;
-         }
-         .container-50 {
-            margin-bottom: 0;
-            width: 50%;
-         }
-         .container, section, aside {
-            border-radius: 6px;
-         }
-         section, aside {
-            background: #b3cde0;
-            color: #000;
-            margin: 1.858736059%;
-            padding: 10px 10px;
-            text-align: left;
-         }
-         section {
-            float: left;
-            width: 30%;
-         }
-         aside {
-            float: right;
-            width: 29.3680297%;
-            border: 1px solid #cad7e3;
-         }
-        </style>
     </head>
     <body>
-    <h1>Weather Today</h1>
-        <div class="container">
+    <h1> Two API</h1>
+        <div>
            <section>
-           <aside>
-            <img src="<?php echo $arr["media_url"];?>"/>
-            <?php echo "<h3>" . $arr["data"]["id"]["media_type"]["media_url"]["permalink"]["username"]["timestamp"] . "</h3>"; ?>
-            </aside>
+
+               <aside>
+                <img src="<?php echo $arr["media_url"]["permalink"];?>"/>
+                <?php echo "<h3>" . $arr["data"]["id"]["media_type"]["media_url"]["permalink"]["username"]["timestamp"] . "</h3>"; ?>
+                </aside>
+               
             <?php
             // Print a single value
             echo "<h1>" . $arr["data"]["id"]["media_type"]["media_url"]["permalink"]["username"]["timestamp"] . "</h1>";
             ?>
+               
             </section>
         </div>
+        <div>
+           
     </body>
 </html>
